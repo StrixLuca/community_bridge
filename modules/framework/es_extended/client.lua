@@ -124,22 +124,31 @@ Framework.GetPlayerJobData = function()
     }
 end
 
+--This is an internal function to get status data
+--- @param search string
+Framework.GetStatusData = function(search)
+    local playerData = Framework.GetPlayerData()
+    local status = playerData.variables.status
+    for _, entry in ipairs(status) do
+        if entry.name == search then
+            return entry.percent or 0
+        end
+    end
+    return 0
+end
+
 ---This will get the hunger of a player
 ---@return number
 Framework.GetHunger = function()
-    local playerData = Framework.GetPlayerData()
-    if not playerData then return 0 end
-    local status = playerData.variables.status
-    return math.floor((status.hunger.percent) + 0.5) or 0
+    local status = Framework.GetStatusData("hunger")
+    return math.floor((status) + 0.5) or 0
 end
 
 ---This will get the thirst of a player
 ---@return number
 Framework.GetThirst = function()
-    local playerData = Framework.GetPlayerData()
-    if not playerData then return 0 end
-    local status = playerData.variables.status
-    return math.floor((status.thirst.percent) + 0.5) or 0
+    local status = Framework.GetStatusData("thirst")
+    return math.floor((status) + 0.5) or 0
 end
 
 --- @description This will return if the player has the specified item in their inventory
