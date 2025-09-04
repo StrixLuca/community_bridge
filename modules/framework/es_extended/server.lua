@@ -252,9 +252,9 @@ end
 --- @param src number
 --- @return number | nil
 Framework.GetHunger = function(src)
-    local status = Framework.GetStatus(src, "status")
-    if not status then return nil end
-
+    local status = Framework.GetStatus(src, "hunger")
+    if not status then return end
+    if type(status) ~= "table" then return end
     for _, entry in ipairs(status) do
         if entry.name == "hunger" then
             return math.floor((entry.percent) + 0.5) or 0
@@ -266,9 +266,9 @@ end
 --- @param src any
 --- @return number | nil
 Framework.GetThirst = function(src)
-    local status = Framework.GetStatus(src, "status")
+    local status = Framework.GetStatus(src, "thirst")
     if not status then return nil end
-
+    if type(status) ~= "table" then return end
     for _, entry in ipairs(status) do
         if entry.name == "thirst" then
             return math.floor((entry.percent) + 0.5) or 0
