@@ -252,7 +252,7 @@ end
 --- @param src number
 --- @return number | nil
 Framework.GetHunger = function(src)
-    local status = Framework.GetStatus(src, "hunger")
+    local status = Framework.GetStatus(src, "status")
     if not status then return end
     if type(status) ~= "table" then return end
     for _, entry in ipairs(status) do
@@ -266,7 +266,7 @@ end
 --- @param src any
 --- @return number | nil
 Framework.GetThirst = function(src)
-    local status = Framework.GetStatus(src, "thirst")
+    local status = Framework.GetStatus(src, "status")
     if not status then return nil end
     if type(status) ~= "table" then return end
     for _, entry in ipairs(status) do
