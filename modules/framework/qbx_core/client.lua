@@ -68,6 +68,24 @@ Framework.Notify = function(message, type, time)
     return QBox:Notify("Notification", type, time, message)
 end
 
+---This will get the hunger of a player
+---@return number
+Framework.GetHunger = function()
+    local player = Framework.GetPlayerData()
+    if not player then return 0 end
+    local playerData = player.PlayerData
+    return math.floor((playerData.metadata.hunger) + 0.5) or 0
+end
+
+---This will get the thirst of a player
+---@return number
+Framework.GetThirst = function()
+    local player = Framework.GetPlayerData()
+    if not player then return 0 end
+    local playerData = player.PlayerData
+    return math.floor((playerData.metadata.thirst) + 0.5) or 0
+end
+
 ---This will get the players identifier (citizenid) etc.
 ---@return string
 Framework.GetPlayerIdentifier = function()

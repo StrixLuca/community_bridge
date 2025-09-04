@@ -124,6 +124,24 @@ Framework.GetPlayerJobData = function()
     }
 end
 
+---This will get the hunger of a player
+---@return number
+Framework.GetHunger = function()
+    local playerData = Framework.GetPlayerData()
+    if not playerData then return 0 end
+    local status = playerData.variables.status
+    return math.floor((status.hunger.percent) + 0.5) or 0
+end
+
+---This will get the thirst of a player
+---@return number
+Framework.GetThirst = function()
+    local playerData = Framework.GetPlayerData()
+    if not playerData then return 0 end
+    local status = playerData.variables.status
+    return math.floor((status.thirst.percent) + 0.5) or 0
+end
+
 --- @description This will return if the player has the specified item in their inventory
 --- @param item string
 --- @return boolean

@@ -303,7 +303,7 @@ Framework.GetHunger = function(src)
     if not player then return end
     local playerData = player.PlayerData
     local newHunger = (playerData.metadata.hunger or 0)
-    return newHunger
+    return math.floor((newHunger) + 0.5) or 0
 end
 
 ---This will return a boolean if the player is dead or in last stand.
@@ -335,7 +335,7 @@ Framework.GetThirst = function(src)
     if not player then return end
     local playerData = player.PlayerData
     local newThirst = (playerData.metadata.thirst or 0)
-    return newThirst
+    return math.floor((newThirst) + 0.5) or 0
 end
 
 -- Framework.GetPlayerPhone(src)
