@@ -128,6 +128,7 @@ end
 --- @param search string
 Framework.GetStatusData = function(search)
     local playerData = Framework.GetPlayerData()
+    if not playerData then return 0 end
     local status = playerData.variables.status
     for _, entry in ipairs(status) do
         if entry.name == search then
